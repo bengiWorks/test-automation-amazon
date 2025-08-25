@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') { // 3. Kodu İndirme
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/bengiWorks/amazon-test-automation.git'
+                    url: 'https://github.com/bengiWorks/test-automation-amazon.git'
             }
         }
 
