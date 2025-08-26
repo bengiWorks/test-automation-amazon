@@ -11,6 +11,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -91,7 +93,6 @@ public class AmazonLoginTest extends BaseTest {
     }
 
 
-
     private void navigateToLaptopsPage() throws InterruptedException {
         FileManager.log("Dizüstü bilgisayar kategorisine gidiliyor...");
 
@@ -157,7 +158,6 @@ public class AmazonLoginTest extends BaseTest {
             Assert.fail("Filtreleme adımı başarısız oldu.", e);
         }
     }
-
 
 
     private void addLaptopToCartByIndex(int desiredProductIndex) {
@@ -516,8 +516,6 @@ public class AmazonLoginTest extends BaseTest {
     }
 
 
-
-
     private void logoutFromAmazon() {
         FileManager.log("Hesaptan çıkış yapılıyor...");
 
@@ -547,63 +545,68 @@ public class AmazonLoginTest extends BaseTest {
         }
     }
 
-    @Test(description = "Amazon.com.tr - Ürün Filtrele, Sepete Ekle, Adres ve Kart Ekle")
-    public void amazonFullTest() throws InterruptedException {
 
-        // Test verilerini dosyadan al
-        String[] userInfo = FileManager.getAmazonCredentials();
-
-        // 1. ADIM: GİRİŞ YAP
+    @BeforeClass
+    public void setup() throws InterruptedException {
         loginToAmazon();
+    }
 
-        // 2. ADIM: DİZÜSTÜ BİLGİSAYAR SAYFASINA GİT
+    @AfterClass
+    public void tearDown() {
+        removeAllFromCart();
+        logoutFromAmazon();
+        FileManager.log("TÜM TEST SENARYOSU BAŞARIYLA TAMAMLANDI.");
+    }
+
+
+    // ----------- TEST SENARYOLARI (@Test Metotları) ------------
+
+    @Test(priority = 1, description = "Dizüstü Bilgisayar Kategorisine Git")
+    public void test_navigateToLaptops() throws InterruptedException {
         navigateToLaptopsPage();
+    }
 
-        // 3. ADIM: FİLTRELEME
+    @Test(priority = 2, description = "'Amazon Tarafından Gönderilir' Filtresini Uygula")
+    public void test_applyFilter() {
         applyFulfilledByAmazonFilter();
+    }
 
-        // 4. ADIM: ÜRÜNÜ SEPETE EKLE
+    @Test(priority = 3, description = "Listeden İlk Ürünü Sepete Ekle")
+    public void test_addProductToCart() {
         addLaptopToCartByIndex(1);
+    }
 
-        // 5. ADIM: SEPETE GİT
+    @Test(priority = 4, description = "Sepet Sayfasından Alışverişi Tamamla Adımına Geç")
+    public void test_proceedToCheckout() {
         FileManager.log("Sağ üstteki sepet ikonuna tıklanarak sepet sayfasına gidiliyor...");
-
-        // Ürünün sepete eklendiğini doğrulamak için sepet ikonundaki sayının '0'dan büyük olmasını bekle
         wait.until(ExpectedConditions.not(ExpectedConditions.textToBe(By.id("nav-cart-count"), "0")));
-
-        // Sağ üstteki sepet ikonuna tıkla
         WebElement cartIcon = wait.until(ExpectedConditions.elementToBeClickable(By.id("nav-cart")));
         cartIcon.click();
-
-        // Sepet sayfasının yüklendiğini doğrula
         wait.until(ExpectedConditions.titleContains("Alışveriş Sepeti"));
         FileManager.log("Alışveriş sepeti sayfası başarıyla açıldı.");
 
-        // 6. ADIM: ALIŞVERİŞİ TAMAMLA BUTONUNA TIKLA
         WebElement proceedToCheckoutButton = wait.until(ExpectedConditions.elementToBeClickable(By.name("proceedToRetailCheckout")));
         proceedToCheckoutButton.click();
         FileManager.log("Sepet sayfasındaki 'Alışverişi Tamamla' butonuna tıklandı.");
-
-        // 7. ADIM: ADRES EKLE
-        addAddress();
-
-        // 8. ADIM: GÜMRÜK KONTROL
-        handleKycPageIfPresent();
-
-        // 9. ADIM: KREDİ KARTI EKLE
-        enterCreditCardDetails(userInfo[10], userInfo[11], userInfo[12]);
-
-        // KART EKLEME İŞLEMİNİ DOĞRULANIYORDDU - SİLDİM  ---
-        //verifyContinueButtonIsActive();
-
-        // 10. ADIM: SEPETTEKİ ÜRÜNLERİ SİL
-        removeAllFromCart();
-
-        // 11. ADIM: HESAPTAN ÇIK
-        logoutFromAmazon();
-
-        FileManager.log("TÜM TEST SENARYOSU BAŞARIYLA TAMAMLANDI.");
     }
+
+    @Test(priority = 5, description = "Yeni Teslimat Adresi Ekle")
+    public void test_addAddress() throws InterruptedException {
+        addAddress();
+    }
+
+    @Test(priority = 6, description = "TC Kimlik No (KYC) Sayfasını Kontrol Et ve Atla")
+    public void test_handleKycPage() {
+        handleKycPageIfPresent();
+    }
+
+    @Test(priority = 7, description = "Kredi Kartı Bilgilerini Gir")
+    public void test_enterCreditCardDetails() {
+        String[] userInfo = FileManager.getAmazonCredentials();
+        enterCreditCardDetails(userInfo[10], userInfo[11], userInfo[12]);
+    }
+
+
 }
 
 
