@@ -16,7 +16,7 @@ pipeline {
 
         stage('Build') { // 4. Projeyi Derleme
             steps {
-                // Testleri çalıştırmadan projeyi derle ve bağımlılıkları indir.
+                // Testleri çalıştırmadan projeyi derle ve bağımlılıkları indir
                 bat 'mvn clean install -DskipTests'
             }
         }
@@ -27,9 +27,19 @@ pipeline {
             }
             post { // 6. Test Sonuçlarını Raporlama
                 always {
-                    // Surefire plugin'inin oluşturduğu test raporlarını Jenkins'e tanıt.
+                    // Surefire plugin'inin oluşturduğu test raporlarını Jenkins'e tanıt
                     junit 'target/surefire-reports/*.xml'
                 }
+            }
+        }
+
+        stage('Allure Report') { //6. Raporlama
+            steps {
+                allure([
+                    includeProperties: false,
+                    jdk: '',
+                    results: [[path: 'allure-results']]
+                ])
             }
         }
     }
