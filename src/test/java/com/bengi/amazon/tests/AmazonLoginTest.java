@@ -580,8 +580,10 @@ public class AmazonLoginTest extends BaseTest {
     public void test_proceedToCheckout() {
         FileManager.log("Sağ üstteki sepet ikonuna tıklanarak sepet sayfasına gidiliyor...");
         wait.until(ExpectedConditions.not(ExpectedConditions.textToBe(By.id("nav-cart-count"), "0")));
+
         WebElement cartIcon = wait.until(ExpectedConditions.elementToBeClickable(By.id("nav-cart")));
-        cartIcon.click();
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", cartIcon);
+
         wait.until(ExpectedConditions.titleContains("Alışveriş Sepeti"));
         FileManager.log("Alışveriş sepeti sayfası başarıyla açıldı.");
 
