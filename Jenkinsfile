@@ -1,39 +1,50 @@
 pipeline {
-    agent any // 1. Ajan Seçimi
+    agent any
 
-    tools { // 2. Araç Tanımlaması
+    tools {
         maven 'Maven311'
         jdk 'JDK21'
     }
 
     stages {
-        stage('Checkout') { // 3. Kodu İndirme
+        stage('Checkout') {
             steps {
                 git branch: 'main',
                     url: 'https://github.com/bengiWorks/test-automation-amazon.git'
             }
         }
 
-        stage('Build') { // 4. Projeyi Derleme
+        stage('Prepare Environment') {
             steps {
-                // Testleri çalıştırmadan projeyi derle ve bağımlılıkları indir
-                bat 'mvn clean install -DskipTests'
+                // Maven temizleme
+                bat 'mvn clean'
+
+                // Allure results klasörünü temizle
+                bat 'rmdir /s /q allure-results || echo Folder does not exist'
+                bat 'mkdir allure-results'
             }
         }
 
-        stage('Run Tests') { // 5. Testleri Çalıştırma
+        stage('Build') {
+            steps {
+                // Testleri çalıştırmadan projeyi derle ve bağımlılıkları indir
+                bat 'mvn install -DskipTests'
+            }
+        }
+
+        stage('Run Tests') {
             steps {
                 bat 'mvn test'
             }
-            post { // 6. Test Sonuçlarını Raporlama
+            post {
                 always {
-                    // Surefire plugin'inin oluşturduğu test raporlarını Jenkins'e tanıt
+                    // Surefire test raporlarını Jenkins'e tanıt
                     junit 'target/surefire-reports/*.xml'
                 }
             }
         }
 
-        stage('Allure Report') { //6. Raporlama
+        stage('Allure Report') {
             steps {
                 allure([
                     includeProperties: false,
