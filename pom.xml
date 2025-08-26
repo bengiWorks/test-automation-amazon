@@ -97,7 +97,7 @@
                         <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <includes>
-                        <include>**/ThisWillNeverMatchAnyFile.java</include>
+                        <include>**/ThisFileDoesNotExist.java</include>
                     </includes>
                     <systemPropertyVariables>
                         <headless>${headless}</headless>
