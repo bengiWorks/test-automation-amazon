@@ -5,6 +5,7 @@ import com.bengi.amazon.base.BaseTest;
 import com.bengi.amazon.utils.FileManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;//bengi
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -22,6 +23,7 @@ import java.util.List;
 public class AmazonLoginTest extends BaseTest {
 
     // ----------- LOGIN (tanıdık / yabancı ayrımı) ------------
+    /*
     private void loginToAmazon() throws InterruptedException {
         FileManager.log("Test Başladı: Amazon Login Senaryosu.");
         driver.get("https://www.amazon.com.tr");
@@ -73,6 +75,118 @@ public class AmazonLoginTest extends BaseTest {
                     By.xpath("//div[@id='nav-flyout-accountList']//span[text()='Giriş yap']")));
             signInButtonInMenu.click();
         }
+
+        wait.until(ExpectedConditions.urlContains("signin"));
+
+        String[] credentials = FileManager.getAmazonCredentials();
+        WebElement emailInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ap_email_login")));
+        emailInput.sendKeys(credentials[0]);
+        driver.findElement(By.id("continue")).click();
+
+        WebElement passwordInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ap_password")));
+        passwordInput.sendKeys(credentials[1]);
+        driver.findElement(By.id("signInSubmit")).click();
+
+        // Girişin başarılı olduğunu doğrula (hesap menüsünü aç ve Çıkış linkini bekle)
+        WebElement myAccountMenuAfterLogin = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("nav-link-accountList")));
+        new Actions(driver).moveToElement(myAccountMenuAfterLogin).perform();
+        WebElement signOutLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("nav-item-signout")));
+        Assert.assertTrue(signOutLink.isDisplayed(), "GİRİŞ BAŞARISIZ: 'Çıkış Yap' linki bulunamadı!");
+        FileManager.log("Giriş başarılı.");
+    }
+
+
+     */
+
+    private void loginToAmazon() throws InterruptedException {
+        FileManager.log("Test Başladı: Amazon Login Senaryosu.");
+
+        // YENİ EKLENEN KISIM: Google üzerinden Amazon'a git
+        driver.get("https://www.google.com");
+        FileManager.log("Google ana sayfası açıldı.");
+
+        // Çerez kontrolü (Google için, eğer çıkarsa)
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+        try {
+            // Google'ın farklı çerez pop-up'ları olabilir, örnek bir locator
+            // Kendi uygulamanızdaki Google çerez pop-up'ına göre bu locator'ı ayarlamanız gerekebilir.
+            if (driver.findElements(By.xpath("//div[text()='Tümünü kabul et' or text()='Accept all']")).size() > 0) {
+                driver.findElement(By.xpath("//div[text()='Tümünü kabul et' or text()='Accept all']")).click();
+                FileManager.log("Google çerezleri kabul edildi.");
+            } else if (driver.findElements(By.id("L2AGLb")).size() > 0){ // Google'ın yeni "Tümünü Kabul Et" butonu için
+                driver.findElement(By.id("L2AGLb")).click();
+                FileManager.log("Google çerezleri (L2AGLb) kabul edildi.");
+            }
+        } catch (Exception ignored) {
+            FileManager.log("Google çerez pop-up'ı anında kontrolde çıkmadı veya farklı bir element.");
+        } finally {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); // İmplicit wait'i geri aç
+        }
+
+
+        WebElement searchBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("q")));
+        searchBox.sendKeys("https://www.amazon.com.tr");
+        searchBox.sendKeys(Keys.ENTER);
+        FileManager.log("Google arama çubuğuna 'https://www.amazon.com.tr' yazıldı ve aratıldı.");
+
+        // Amazon linkini bul ve tıkla
+        WebElement amazonLink = wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("amazon.com.tr")));
+        amazonLink.click();
+        FileManager.log("Arama sonuçlarından Amazon.com.tr linkine tıklandı.");
+        // YENİ EKLENEN KISIM SONU
+
+        // Mevcut Amazon çerez kontrolü
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+        try {
+            if (driver.findElements(By.id("sp-cc-accept")).size() > 0) {
+                driver.findElement(By.id("sp-cc-accept")).click();
+                FileManager.log("Amazon çerezleri anında kabul edildi.");
+            } else {
+                FileManager.log("Amazon çerez pop-up'ı anında kontrolde çıkmadı.");
+            }
+        } catch (Exception ignored) {
+        } finally {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        }
+
+        // Anasayfa tipini kontrol et (tanıdık mı değil mi)
+        // ... (Kalan kodunuz olduğu gibi devam edebilir) ...
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+        boolean isFamiliarHomepage = driver.findElements(By.id("nav-link-accountList")).size() > 0;
+        if (isFamiliarHomepage) {
+            try {
+                String greeting = driver.findElement(By.id("nav-link-accountList-nav-line-1")).getText();
+                isFamiliarHomepage = greeting != null && greeting.contains("Merhaba");
+            } catch (Exception e) {
+                isFamiliarHomepage = false;
+            }
+        }
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        if (isFamiliarHomepage) {
+            FileManager.log("Kişiselleştirilmiş anasayfa algılandı. Giriş menüsü açılıyor...");
+            WebElement accountListMenu = driver.findElement(By.id("nav-link-accountList"));
+            new Actions(driver).moveToElement(accountListMenu).perform();
+            Thread.sleep(1000);
+            WebElement signInButtonInMenu = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                    By.xpath("//div[@id='nav-flyout-accountList']//span[text()='Giriş yap']")));
+            signInButtonInMenu.click();
+        } else {
+            FileManager.log("Genel anasayfa algılandı. 'Hesabım' üzerinden giriş menüsü açılıyor...");
+
+            // Mevcut kodunuzdaki "Hesabım" linkini kullanmaya devam edelim, eğer varsa.
+            // Genel anasayfada bu linkin yeri veya adı değişebilir, bu kısmı kontrol etmekte fayda var.
+            WebElement ilkHesabimLinki = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Hesabım")));
+            ilkHesabimLinki.click();
+            Thread.sleep(1000); // Gecikme eklendi, menünün açılması için
+            WebElement accountListMenu = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("nav-link-accountList")));
+            new Actions(driver).moveToElement(accountListMenu).perform();
+            Thread.sleep(1000); // Gecikme eklendi, flyout'ın görünür olması için
+            WebElement signInButtonInMenu = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                    By.xpath("//div[@id='nav-flyout-accountList']//span[text()='Giriş yap']")));
+            signInButtonInMenu.click();
+        }
+
 
         wait.until(ExpectedConditions.urlContains("signin"));
 
