@@ -32,6 +32,7 @@ pipeline {
             }
         }
 
+        /*
         stage('Run Tests') {
             steps {
                 bat 'mvn test'
@@ -43,6 +44,21 @@ pipeline {
                 }
             }
         }
+        */
+
+        stage('Run Tests') {
+            steps {
+                // Test failures ignore ediliyor, Allure raporu oluşacak
+                bat 'mvn test -Dmaven.test.failure.ignore=true'
+            }
+            post {
+                always {
+                    // Surefire test raporlarını Jenkins'e tanıt
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
+
 
         stage('Allure Report') {
             steps {
