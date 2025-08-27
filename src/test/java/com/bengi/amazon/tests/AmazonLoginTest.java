@@ -24,6 +24,7 @@ public class AmazonLoginTest extends BaseTest {
 
     // ----------- LOGIN (tanıdık / yabancı ayrımı) ------------
     /*
+    first version
     private void loginToAmazon() throws InterruptedException {
         FileManager.log("Test Başladı: Amazon Login Senaryosu.");
         driver.get("https://www.amazon.com.tr");
@@ -101,15 +102,13 @@ public class AmazonLoginTest extends BaseTest {
     private void loginToAmazon() throws InterruptedException {
         FileManager.log("Test Başladı: Amazon Login Senaryosu.");
 
-        // YENİ EKLENEN KISIM: Google üzerinden Amazon'a git
+        // Google üzerinden Amazon'a git
         driver.get("https://www.google.com");
         FileManager.log("Google ana sayfası açıldı.");
 
         // Çerez kontrolü (Google için, eğer çıkarsa)
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
         try {
-            // Google'ın farklı çerez pop-up'ları olabilir, örnek bir locator
-            // Kendi uygulamanızdaki Google çerez pop-up'ına göre bu locator'ı ayarlamanız gerekebilir.
             if (driver.findElements(By.xpath("//div[text()='Tümünü kabul et' or text()='Accept all']")).size() > 0) {
                 driver.findElement(By.xpath("//div[text()='Tümünü kabul et' or text()='Accept all']")).click();
                 FileManager.log("Google çerezleri kabul edildi.");
@@ -133,7 +132,7 @@ public class AmazonLoginTest extends BaseTest {
         WebElement amazonLink = wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("amazon.com.tr")));
         amazonLink.click();
         FileManager.log("Arama sonuçlarından Amazon.com.tr linkine tıklandı.");
-        // YENİ EKLENEN KISIM SONU
+
 
         // Mevcut Amazon çerez kontrolü
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
@@ -150,7 +149,6 @@ public class AmazonLoginTest extends BaseTest {
         }
 
         // Anasayfa tipini kontrol et (tanıdık mı değil mi)
-        // ... (Kalan kodunuz olduğu gibi devam edebilir) ...
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
         boolean isFamiliarHomepage = driver.findElements(By.id("nav-link-accountList")).size() > 0;
         if (isFamiliarHomepage) {
@@ -174,8 +172,6 @@ public class AmazonLoginTest extends BaseTest {
         } else {
             FileManager.log("Genel anasayfa algılandı. 'Hesabım' üzerinden giriş menüsü açılıyor...");
 
-            // Mevcut kodunuzdaki "Hesabım" linkini kullanmaya devam edelim, eğer varsa.
-            // Genel anasayfada bu linkin yeri veya adı değişebilir, bu kısmı kontrol etmekte fayda var.
             WebElement ilkHesabimLinki = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Hesabım")));
             ilkHesabimLinki.click();
             Thread.sleep(1000); // Gecikme eklendi, menünün açılması için

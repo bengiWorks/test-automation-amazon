@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass; // <-- DEĞİŞİKLİK
-import org.testng.annotations.BeforeClass; // <-- DEĞİŞİKLİK
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
 import java.time.Duration;
 import java.util.Collections;
@@ -30,7 +30,6 @@ public class BaseTest {
         options.addArguments("--disable-blink-features=AutomationControlled");
 
 
-        // "Şifre Kaydedilsin mi?" Pop-up'ını Devre Dışı Bırakma
         // Chrome'un tercihlerini (preferences) değiştirmek için bir harita (Map) oluşturuyoruz.
         Map<String, Object> prefs = new HashMap<>();
 

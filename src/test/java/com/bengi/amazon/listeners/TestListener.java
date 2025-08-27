@@ -6,19 +6,19 @@ import org.testng.ITestResult;
 
 public class TestListener implements ITestListener {
 
-    // TestNG, bir test metodunu çalıştırmaya başladığında bu metodu çağırır.
+    // TestNG, bir test metodunu çalıştırmaya başladığında bu metodu çağır
     @Override
     public void onTestStart(ITestResult result) {
         System.out.println("===== TEST BAŞLADI: " + result.getMethod().getMethodName() + " =====");
     }
 
-    // Test metodu başarıyla tamamlandığında bu metodu çağırır.
+    // Test metodu başarıyla tamamlandığında bu metodu çağır
     @Override
     public void onTestSuccess(ITestResult result) {
         System.out.println("===== TEST BAŞARILI: " + result.getMethod().getMethodName() + " =====");
     }
 
-    // Test metodu başarısız olduğunda bu metodu çağırır.
+    // Test metodu başarısız olduğunda bu metodu çağır
     @Override
     public void onTestFailure(ITestResult result) {
         System.out.println("!!!!! TEST BAŞARISIZ: " + result.getMethod().getMethodName() + " !!!!!");
@@ -26,7 +26,7 @@ public class TestListener implements ITestListener {
         System.out.println("Hata Sebebi: " + result.getThrowable());
     }
 
-    // Test metodu atlandığında bu metodu çağırır.
+    // Test metodu atlandığında bu metodu çağır
     @Override
     public void onTestSkipped(ITestResult result) {
         System.out.println("===== TEST ATLANDI: " + result.getMethod().getMethodName() + " =====");

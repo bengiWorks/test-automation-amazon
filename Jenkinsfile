@@ -32,19 +32,6 @@ pipeline {
             }
         }
 
-        /*
-        stage('Run Tests') {
-            steps {
-                bat 'mvn test'
-            }
-            post {
-                always {
-                    // Surefire test raporlarını Jenkins'e tanıt
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
-        }
-        */
 
         stage('Run Tests') {
             steps {
