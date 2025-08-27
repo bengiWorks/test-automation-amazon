@@ -14,6 +14,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import io.qameta.allure.*;
 
 import java.time.Duration;
 import java.util.List;
@@ -561,22 +562,34 @@ public class AmazonLoginTest extends BaseTest {
 
     // ----------- TEST SENARYOLARI (@Test Metotları) ------------
 
-    @Test(priority = 1, description = "Dizüstü Bilgisayar Kategorisine Git")
+    @Test(priority = 1)
+    @Story("Kategori gezintisi")
+    @Description("Dizüstü Bilgisayar Kategorisine Git")
+    @Severity(SeverityLevel.NORMAL)
     public void test_navigateToLaptops() throws InterruptedException {
         navigateToLaptopsPage();
     }
 
-    @Test(priority = 2, description = "'Amazon Tarafından Gönderilir' Filtresini Uygula")
+    @Test(priority = 2)
+    @Story("Ürün Filtresi")
+    @Description("Amazon Tarafından Gönderilir' Filtresini Uygula")
+    @Severity(SeverityLevel.CRITICAL)
     public void test_applyFilter() {
         applyFulfilledByAmazonFilter();
     }
 
-    @Test(priority = 3, description = "Listeden İlk Ürünü Sepete Ekle")
+    @Test(priority = 3)
+    @Story("Sepet İşlemleri")
+    @Description("Listeden İlk Ürünü Sepete Ekle")
+    @Severity(SeverityLevel.CRITICAL)
     public void test_addProductToCart() {
         addLaptopToCartByIndex(1);
     }
 
-    @Test(priority = 4, description = "Sepet Sayfasından Alışverişi Tamamla Adımına Geç")
+    @Test(priority = 4)
+    @Story("Sipariş Tamamlama")
+    @Description("Sepet Sayfasından Alışverişi Tamamla Adımına Geç")
+    @Severity(SeverityLevel.BLOCKER)
     public void test_proceedToCheckout() {
         FileManager.log("Sağ üstteki sepet ikonuna tıklanarak sepet sayfasına gidiliyor...");
         wait.until(ExpectedConditions.not(ExpectedConditions.textToBe(By.id("nav-cart-count"), "0")));
@@ -592,20 +605,39 @@ public class AmazonLoginTest extends BaseTest {
         FileManager.log("Sepet sayfasındaki 'Alışverişi Tamamla' butonuna tıklandı.");
     }
 
-    @Test(priority = 5, description = "Yeni Teslimat Adresi Ekle")
+
+    @Test(priority = 5)
+    @Story("Adres İşlemleri")
+    @Description("Yeni Teslimat Adresi Ekle")
+    @Severity(SeverityLevel.CRITICAL)
     public void test_addAddress() throws InterruptedException {
         addAddress();
     }
-
-    @Test(priority = 6, description = "TC Kimlik No (KYC) Sayfasını Kontrol Et ve Atla")
+    @Test(priority = 6)
+    @Story("KYC İşlemleri")
+    @Description("TC Kimlik No (KYC) Sayfasını Kontrol Et")
+    @Severity(SeverityLevel.NORMAL)
     public void test_handleKycPage() {
         handleKycPageIfPresent();
     }
 
-    @Test(priority = 7, description = "Kredi Kartı Bilgilerini Gir")
+
+    @Test(priority = 7)
+    @Story("Ödeme İşlemleri")
+    @Description("Kredi Kartı Bilgilerini Gir")
+    @Severity(SeverityLevel.BLOCKER)
     public void test_enterCreditCardDetails() {
         String[] userInfo = FileManager.getAmazonCredentials();
         enterCreditCardDetails(userInfo[10], userInfo[11], userInfo[12]);
+    }
+
+    @Test(priority = 8)
+    @Story("Test Fail Örneği")
+    @Description("Bu test bilinçli olarak başarısız olacak")
+    @Severity(SeverityLevel.MINOR)
+    public void test_failExample() {
+        // Fail etmek için
+        Assert.fail("Bu test kasıtlı olarak başarısızdır.");
     }
 
 
