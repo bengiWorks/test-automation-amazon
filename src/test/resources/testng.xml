@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Amazon E-Ticaret Otomasyon Süiti" verbose="5">
+<listeners>
+    <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    <listener class-name="com.bengi.amazon.listeners.TestListener"/>
+</listeners>
+<test name="Giriş ve Doğrulama Testleri">
+    <classes>
+        <class name="com.bengi.amazon.tests.AmazonLoginTest"/>
+    </classes>
+</test>
+</suite>
