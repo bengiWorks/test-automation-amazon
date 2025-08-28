@@ -227,3 +227,142 @@
 2025-08-26 10:35:31 - 'Çıkış Yap' linkine Javascript ile tıklandı.
 2025-08-26 10:35:31 - BAŞARILI: Hesaptan çıkış yapıldı ve 'Giriş yap' sayfası başlığı doğrulandı.
 2025-08-26 10:35:31 - TÜM TEST SENARYOSU BAŞARIYLA TAMAMLANDI.
+2025-08-27 13:39:38 - Test Başladı: Amazon Login Senaryosu.
+2025-08-27 13:39:40 - Google ana sayfası açıldı.
+2025-08-27 13:39:40 - Google arama çubuğuna 'https://www.amazon.com.tr' yazıldı ve aratıldı.
+2025-08-27 13:39:43 - Arama sonuçlarından Amazon.com.tr linkine tıklandı.
+2025-08-27 13:39:43 - Amazon çerez pop-up'ı anında kontrolde çıkmadı.
+2025-08-27 13:39:43 - Kişiselleştirilmiş anasayfa algılandı. Giriş menüsü açılıyor...
+2025-08-27 13:39:45 - Amazon kullanıcı bilgileri dosyadan okundu.
+2025-08-27 13:39:48 - Giriş başarılı.
+2025-08-27 13:39:48 - Dizüstü bilgisayar kategorisine gidiliyor...
+2025-08-27 13:39:48 - Hamburger (Tümü) menüsü açıldı.
+2025-08-27 13:39:49 - 'Bilgisayar' kategorisi bulundu.
+2025-08-27 13:39:49 - 'Bilgisayar' kategorisine tıklandı.
+2025-08-27 13:39:49 - Alt menü konteyneri DOM'da görünür hale geldi.
+2025-08-27 13:39:49 - 'Dizüstü Bilgisayarlar' linki alt menüde görünür hale geldi.
+2025-08-27 13:39:51 - 'Dizüstü Bilgisayarlar' linkine başarıyla tıklandı.
+2025-08-27 13:39:51 - Dizüstü bilgisayar listesi sayfası başarıyla açıldı.
+2025-08-27 13:39:51 - 'Amazon Tarafından Gönderilir' filtresi uygulanıyor...
+2025-08-27 13:39:53 - Filtre linkine tıklandı.
+2025-08-27 13:39:53 - BAŞARILI: Filtre uygulandı ve ürün listesi güncellendi.
+2025-08-27 13:39:53 - Filtrelenmiş listeden sepete eklenebilir 1. ürün aranıyor...
+2025-08-27 13:39:53 - Eklenebilir ürün bulundu: 'Game Garaj Slayer4 7XL-4060 C4 Intel Core i7 14700HX 64GB RAM 2TB SSD RTX4060 17 QHD 240Hz IPS FreeDOS Dizüstü Bilgisayar + Çanta'. Toplam eklenebilir ürün: 1
+2025-08-27 13:39:53 - BAŞARILI: Listeden 1. eklenebilir ürün olan 'Game Garaj Slayer4 7XL-4060 C4 Intel Core i7 14700HX 64GB RAM 2TB SSD RTX4060 17 QHD 240Hz IPS FreeDOS Dizüstü Bilgisayar + Çanta' sepete eklendi.
+2025-08-27 13:39:53 - Sağ üstteki sepet ikonuna tıklanarak sepet sayfasına gidiliyor...
+2025-08-27 13:39:55 - Alışveriş sepeti sayfası başarıyla açıldı.
+2025-08-27 13:39:56 - Sepet sayfasındaki 'Alışverişi Tamamla' butonuna tıklandı.
+2025-08-27 13:39:56 - Adres ekleme denemesi başlatılıyor...
+2025-08-27 13:39:58 - Teslimat adresi seçme sayfasına gelindi.
+2025-08-27 13:39:58 - 'Yeni adres ekle' linkine tıklandı.
+2025-08-27 13:39:59 - Adres ekleme formu açıldı.
+2025-08-27 13:39:59 - Amazon kullanıcı bilgileri dosyadan okundu.
+2025-08-27 13:39:59 - Metin alanları dolduruldu: Ad, Telefon, Adres.
+2025-08-27 13:39:59 - Şehir alanı dolduruluyor: İstanbul
+2025-08-27 13:40:01 - Şehir otomatik tamamlamadan seçildi: İstanbul
+2025-08-27 13:40:01 - İlçe alanı dolduruluyor: Adalar
+2025-08-27 13:40:02 - İlçe otomatik tamamlamadan seçildi: Adalar
+2025-08-27 13:40:02 - Mahalle alanı dolduruluyor: Maden Mh.
+2025-08-27 13:40:04 - Mahalle otomatik tamamlamadan seçildi: Maden Mh.
+2025-08-27 13:40:04 - 'Bu adresi kullan' butonuna tıklanıyor...
+2025-08-27 13:40:04 - Adres kayıt işlemi için butona tıklandı.
+2025-08-27 13:40:06 - DOĞRULANDI: Sayfa geçişi başarıyla tetiklendi.
+2025-08-27 13:40:16 - DOĞRULANDI: Adres başarıyla eklendi ve yeni sayfaya (TCKN veya Ödeme) geçildi.
+2025-08-27 13:40:16 - TCKN (KYC) sayfası kontrol ediliyor...
+2025-08-27 13:40:48 - TCKN (KYC) sayfası belirtilen sürede çıkmadı, bu adım atlanıyor.
+2025-08-27 13:40:48 - Amazon kullanıcı bilgileri dosyadan okundu.
+2025-08-27 13:40:48 - Kredi kartı ekleme adımı başlatılıyor...
+2025-08-27 13:40:48 - 'Kredi kartı veya banka kartı ekleyin' linkine Javascript ile tıklandı.
+2025-08-27 13:40:49 - Ödeme formunu içeren iframe bulundu ve geçiş yapıldı.
+2025-08-27 13:40:49 - Form alanlarının doldurulması başlıyor...
+2025-08-27 13:40:49 - Kart numarası girildi.
+2025-08-27 13:40:50 - Kart üzerindeki isim girildi.
+2025-08-27 13:40:50 - Son kullanma tarihi (Ay/Yıl) seçildi: 03/30
+2025-08-27 13:40:50 - 'Hayır' yazısını içeren SPAN elementine Javascript ile tıklandı.
+2025-08-27 13:40:50 - 'Kartınızı ekleyin' butonuna tıklandı.
+2025-08-27 13:40:51 - Kart ekleme sonrası olası hata mesajı kontrol ediliyor...
+2025-08-27 13:40:51 - HATA YAKALANDI: 'Devam etmek için ödeme aracınızı kaydetmek isteyip istemediğinizi seçiniz.'. Şimdi 'İptal et' butonuna tıklanacak.
+2025-08-27 13:40:51 - 'İptal et' butonuna tıklandı.
+2025-08-27 13:40:51 - Ana içerik alanına (default content) geri dönüldü.
+2025-08-27 13:40:51 - Sepet temizleme başlatılıyor...
+2025-08-27 13:40:52 - Silinecek bir ürün bulundu, tıklanıyor...
+2025-08-27 13:41:04 - Sepette silinecek başka ürün bulunamadı.
+2025-08-27 13:41:04 - Tüm ürünler silindi. Ara toplamın '(0 ürün)' olduğu doğrulanıyor...
+2025-08-27 13:41:04 - Sepet ara toplam yazısı: Ara toplam (0 ürün):
+2025-08-27 13:41:04 - Sepet başarıyla temizlendi.
+2025-08-27 13:41:04 - Hesaptan çıkış yapılıyor...
+2025-08-27 13:41:04 - 'Hesap ve Listeler' menüsünün üzerine fare ile gelindi.
+2025-08-27 13:41:04 - 'Çıkış Yap' linki bulundu.
+2025-08-27 13:41:05 - 'Çıkış Yap' linkine Javascript ile tıklandı.
+2025-08-27 13:41:05 - BAŞARILI: Hesaptan çıkış yapıldı ve 'Giriş yap' sayfası başlığı doğrulandı.
+2025-08-27 13:41:05 - TÜM TEST SENARYOSU BAŞARIYLA TAMAMLANDI.
+2025-08-27 13:42:43 - Test Başladı: Amazon Login Senaryosu.
+2025-08-27 13:42:45 - Google ana sayfası açıldı.
+2025-08-27 13:42:45 - Google arama çubuğuna 'https://www.amazon.com.tr' yazıldı ve aratıldı.
+2025-08-27 13:42:50 - Arama sonuçlarından Amazon.com.tr linkine tıklandı.
+2025-08-27 13:42:50 - Amazon çerezleri anında kabul edildi.
+2025-08-27 13:42:50 - Kişiselleştirilmiş anasayfa algılandı. Giriş menüsü açılıyor...
+2025-08-27 13:42:52 - Amazon kullanıcı bilgileri dosyadan okundu.
+2025-08-27 13:42:57 - Giriş başarılı.
+2025-08-27 13:42:57 - Dizüstü bilgisayar kategorisine gidiliyor...
+2025-08-27 13:42:57 - Hamburger (Tümü) menüsü açıldı.
+2025-08-27 13:42:58 - 'Bilgisayar' kategorisi bulundu.
+2025-08-27 13:42:58 - 'Bilgisayar' kategorisine tıklandı.
+2025-08-27 13:42:58 - Alt menü konteyneri DOM'da görünür hale geldi.
+2025-08-27 13:42:58 - 'Dizüstü Bilgisayarlar' linki alt menüde görünür hale geldi.
+2025-08-27 13:43:00 - 'Dizüstü Bilgisayarlar' linkine başarıyla tıklandı.
+2025-08-27 13:43:00 - Dizüstü bilgisayar listesi sayfası başarıyla açıldı.
+2025-08-27 13:43:00 - 'Amazon Tarafından Gönderilir' filtresi uygulanıyor...
+2025-08-27 13:43:03 - Filtre linkine tıklandı.
+2025-08-27 13:43:03 - BAŞARILI: Filtre uygulandı ve ürün listesi güncellendi.
+2025-08-27 13:43:03 - Filtrelenmiş listeden sepete eklenebilir 1. ürün aranıyor...
+2025-08-27 13:43:03 - Eklenebilir ürün bulundu: 'Game Garaj Slayer4 7XL-4060 C4 Intel Core i7 14700HX 64GB RAM 2TB SSD RTX4060 17 QHD 240Hz IPS FreeDOS Dizüstü Bilgisayar + Çanta'. Toplam eklenebilir ürün: 1
+2025-08-27 13:43:03 - BAŞARILI: Listeden 1. eklenebilir ürün olan 'Game Garaj Slayer4 7XL-4060 C4 Intel Core i7 14700HX 64GB RAM 2TB SSD RTX4060 17 QHD 240Hz IPS FreeDOS Dizüstü Bilgisayar + Çanta' sepete eklendi.
+2025-08-27 13:43:03 - Sağ üstteki sepet ikonuna tıklanarak sepet sayfasına gidiliyor...
+2025-08-27 13:43:06 - Alışveriş sepeti sayfası başarıyla açıldı.
+2025-08-27 13:43:12 - Sepet sayfasındaki 'Alışverişi Tamamla' butonuna tıklandı.
+2025-08-27 13:43:12 - Adres ekleme denemesi başlatılıyor...
+2025-08-27 13:43:14 - Teslimat adresi seçme sayfasına gelindi.
+2025-08-27 13:43:14 - 'Yeni adres ekle' linkine tıklandı.
+2025-08-27 13:43:15 - Adres ekleme formu açıldı.
+2025-08-27 13:43:15 - Amazon kullanıcı bilgileri dosyadan okundu.
+2025-08-27 13:43:16 - Metin alanları dolduruldu: Ad, Telefon, Adres.
+2025-08-27 13:43:16 - Şehir alanı dolduruluyor: İstanbul
+2025-08-27 13:43:17 - Şehir otomatik tamamlamadan seçildi: İstanbul
+2025-08-27 13:43:18 - İlçe alanı dolduruluyor: Adalar
+2025-08-27 13:43:19 - İlçe otomatik tamamlamadan seçildi: Adalar
+2025-08-27 13:43:19 - Mahalle alanı dolduruluyor: Maden Mh.
+2025-08-27 13:43:20 - Mahalle otomatik tamamlamadan seçildi: Maden Mh.
+2025-08-27 13:43:21 - 'Bu adresi kullan' butonuna tıklanıyor...
+2025-08-27 13:43:21 - Adres kayıt işlemi için butona tıklandı.
+2025-08-27 13:43:23 - DOĞRULANDI: Sayfa geçişi başarıyla tetiklendi.
+2025-08-27 13:43:34 - DOĞRULANDI: Adres başarıyla eklendi ve yeni sayfaya (TCKN veya Ödeme) geçildi.
+2025-08-27 13:43:34 - TCKN (KYC) sayfası kontrol ediliyor...
+2025-08-27 13:44:05 - TCKN (KYC) sayfası belirtilen sürede çıkmadı, bu adım atlanıyor.
+2025-08-27 13:44:05 - Amazon kullanıcı bilgileri dosyadan okundu.
+2025-08-27 13:44:05 - Kredi kartı ekleme adımı başlatılıyor...
+2025-08-27 13:44:05 - 'Kredi kartı veya banka kartı ekleyin' linkine Javascript ile tıklandı.
+2025-08-27 13:44:07 - Ödeme formunu içeren iframe bulundu ve geçiş yapıldı.
+2025-08-27 13:44:07 - Form alanlarının doldurulması başlıyor...
+2025-08-27 13:44:07 - Kart numarası girildi.
+2025-08-27 13:44:07 - Kart üzerindeki isim girildi.
+2025-08-27 13:44:07 - Son kullanma tarihi (Ay/Yıl) seçildi: 03/30
+2025-08-27 13:44:07 - 'Hayır' yazısını içeren SPAN elementine Javascript ile tıklandı.
+2025-08-27 13:44:07 - 'Kartınızı ekleyin' butonuna tıklandı.
+2025-08-27 13:44:08 - Kart ekleme sonrası olası hata mesajı kontrol ediliyor...
+2025-08-27 13:44:18 - Hata mesajı bulunamadı. Kart ekleme işleminin başarılı olduğu varsayılıyor.
+2025-08-27 13:44:18 - Ana içerik alanına (default content) geri dönüldü.
+2025-08-27 13:44:18 - 'Bu ödeme şeklini kullan' butonunun aktifleşmesi bekleniyor...
+2025-08-27 13:44:18 - BAŞARILI: 'Bu ödeme şeklini kullan' butonu aktifleşti.
+2025-08-27 13:44:18 - Sepet temizleme başlatılıyor...
+2025-08-27 13:44:19 - Silinecek bir ürün bulundu, tıklanıyor...
+2025-08-27 13:44:31 - Sepette silinecek başka ürün bulunamadı.
+2025-08-27 13:44:31 - Tüm ürünler silindi. Ara toplamın '(0 ürün)' olduğu doğrulanıyor...
+2025-08-27 13:44:31 - Sepet ara toplam yazısı: Ara toplam (0 ürün):
+2025-08-27 13:44:31 - Sepet başarıyla temizlendi.
+2025-08-27 13:44:31 - Hesaptan çıkış yapılıyor...
+2025-08-27 13:44:31 - 'Hesap ve Listeler' menüsünün üzerine fare ile gelindi.
+2025-08-27 13:44:31 - 'Çıkış Yap' linki bulundu.
+2025-08-27 13:44:32 - 'Çıkış Yap' linkine Javascript ile tıklandı.
+2025-08-27 13:44:32 - BAŞARILI: Hesaptan çıkış yapıldı ve 'Giriş yap' sayfası başlığı doğrulandı.
+2025-08-27 13:44:32 - TÜM TEST SENARYOSU BAŞARIYLA TAMAMLANDI.
